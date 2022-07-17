@@ -3,10 +3,10 @@ const controller = require('../controllers/weapon');
 
 const router = Router();
 
-router.get("/", controller.getPictures);
-router.get("/:id", controller.getPictureById);
-router.put("/", controller.addPicture);
-router.post("/:id", controller.updatePicture);
-router.delete("/:id", controller.deletePicture);
+router.get("/weapons", controller.getWeapons);
+router.get("/weapons/:id", controller.getWeaponById);
+router.put("/weapons", controller.addWeapon);
+router.post("/weapons/:id", controller.updateWeapon);
+router.delete("/weapons/:id", controller.deleteWeapon);
 
 module.exports = router;
