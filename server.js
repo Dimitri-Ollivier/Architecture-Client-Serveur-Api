@@ -1,6 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const weaponRoutes = require('./src/routes/weapon');
+const weaponPictureRoutes = require('./src/routes/weaponPicture');
+const accessoryRoutes = require('./src/routes/accessory');
+const accessoryPictureRoutes = require('./src/routes/accessoryPicture');
+const shoppingCartRoutes = require('./src/routes/shoppingCart');
+const userRoutes = require('./src/routes/user');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
@@ -16,6 +21,11 @@ mongoose.connect(mongoUri, {useUnifiedTopology: true, useNewUrlParser: true})
 app.use(express.json());
 
 app.use("/weapons", weaponRoutes);
+app.use("/weaponPictures", weaponPictureRoutes);
+app.use("/accessories", accessoryRoutes);
+app.use("/accessoryPictures", accessoryPictureRoutes);
+app.use("/shoppingCarts", shoppingCartRoutes);
+app.use("/users", userRoutes);
 
 app.listen(port, () => console.log(`Server litsen on port ${port}`));
 
