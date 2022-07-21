@@ -1,25 +1,25 @@
-const Weapon = require('../models/weapon');
+const Accessory = require('../models/Accessory');
 
-exports.getWeapons = async (req, res) => {
+exports.getAccessories = async (req, res) => {
     try {
-        const result = await Weapon.find()
+        const result = await Accessory.find()
         res.status(200).json(result)
     } catch (err) {
         loadError(res, err);
     }
 }
 
-exports.getWeaponById = async (req, res) => {
+exports.getAccessoryById = async (req, res) => {
     try{
-        const result = await Weapon.findById(req.params.id)
+        const result = await Accessory.findById(req.params.id)
         res.status(200).json(result)
     }catch(err){
         loadError(res, err);
     }
 }
 
-exports.createWeapon = async (req, res) => {
-    const weapon = new Weapon({
+exports.createAccessory = async (req, res) => {
+    const accessory = new Accessory({
         name: req.body.name,
         description : req.body.description,
         manufacturer: req.body.manufacturer,
@@ -34,28 +34,28 @@ exports.createWeapon = async (req, res) => {
     })
 
     try{
-        const result =  await weapon.save();
+        const result =  await accessory.save();
         res.status(200).json(result);
     }catch(err){
         loadError(res, err);
     }
 }
 
-exports.updateWeapon = async (req, res) => {
+exports.updateAccessory = async (req, res) => {
     try{
-        const weapon = await Weapon.findById(req.params.id);
-        Object.assign(weapon, req.body);
-        weapon.save();
-        res.status(200).send({data: weapon});
+        const accessory = await Accessory.findById(req.params.id);
+        Object.assign(accessory, req.body);
+        accessory.save();
+        res.status(200).send({data: accessory});
     }catch(err){
         loadError(res, err);
     }
 }
 
-exports.deleteWeaponById = async (req, res) => {
+exports.deleteAccessoryById = async (req, res) => {
     try{
-        const weapon = await Weapon.findById(req.params.id)
-        const result = await weapon.delete()
+        const Accessory = await Accessory.findById(req.params.id)
+        const result = await Accessory.delete()
         res.json(result)
     }catch(err){
         loadError(res, err);
@@ -65,7 +65,7 @@ exports.deleteWeaponById = async (req, res) => {
 function loadError(res, err) {
     res.status(400).send({ error: "Bad request !", description: err});
 
-    res.status(404).send({ error: "Weapon not found !", description: err});
+    res.status(404).send({ error: "Accessory not found !", description: err});
 
     res.status(500).send({ error: "Server error !", description: err});
 }

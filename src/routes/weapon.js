@@ -1,12 +1,15 @@
-const { Router } = require('express');
-const controller = require('../controllers/weapon');
+const express = require('express')
+const router = express.Router()
+const weaponController = require('../controllers/weapon')
 
-const router = Router();
+router.get('/', weaponController.getWeapons);
 
-router.get("/weapons", controller.getWeapons);
-router.get("/weapons/:id", controller.getWeaponById);
-router.put("/weapons", controller.addWeapon);
-router.post("/weapons/:id", controller.updateWeapon);
-router.delete("/weapons/:id", controller.deleteWeapon);
+router.get('/:id', weaponController.getWeaponById)
 
-module.exports = router;
+router.post('/', weaponController.createWeapon)
+
+router.post('/:id',weaponController.updateWeapon)
+
+router.delete('/:id',weaponController.deleteWeaponById)
+
+module.exports = router
