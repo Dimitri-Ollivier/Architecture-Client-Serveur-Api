@@ -10,7 +10,7 @@ const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
 const app = express();
-const port = 3000;
+const port = 8080;
 const mongoUri = "mongodb+srv://dimitrioll:Dimi1405@cluster0.x4sro.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(mongoUri, {useUnifiedTopology: true, useNewUrlParser: true})
