@@ -1,4 +1,4 @@
-const Accessory = require('../models/Accessory');
+const Accessory = require('../models/accessory');
 
 exports.getAccessories = async (req, res) => {
     try {
@@ -54,8 +54,8 @@ exports.updateAccessory = async (req, res) => {
 
 exports.deleteAccessoryById = async (req, res) => {
     try{
-        const Accessory = await Accessory.findById(req.params.id)
-        const result = await Accessory.delete()
+        const accessory = await Accessory.findById(req.params.id)
+        const result = await accessory.delete()
         res.json(result)
     }catch(err){
         loadError(res, err);
