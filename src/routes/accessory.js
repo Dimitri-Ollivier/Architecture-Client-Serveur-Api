@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const accessoryController = require('../controllers/accessories')
+const accessoryController = require('../controllers/accessory')
 
 router.get('/', accessoryController.getAccessories);
 
