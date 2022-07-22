@@ -5,7 +5,7 @@ exports.getWeapons = async (req, res) => {
         const result = await Weapon.find()
         res.status(200).json(result)
     } catch (err) {
-        loadError(res, err);
+        res.status(400).send({ error: "Bad request !", description: err});
     }
 }
 
@@ -14,7 +14,7 @@ exports.getWeaponById = async (req, res) => {
         const result = await Weapon.findById(req.params.id)
         res.status(200).json(result)
     }catch(err){
-        loadError(res, err);
+        res.status(400).send({ error: "Bad request !", description: err});
     }
 }
 
@@ -37,7 +37,7 @@ exports.createWeapon = async (req, res) => {
         const result =  await weapon.save();
         res.status(200).json(result);
     }catch(err){
-        loadError(res, err);
+        res.status(400).send({ error: "Bad request !", description: err});
     }
 }
 
@@ -48,7 +48,7 @@ exports.updateWeapon = async (req, res) => {
         weapon.save();
         res.status(200).send({data: weapon});
     }catch(err){
-        loadError(res, err);
+        res.status(400).send({ error: "Bad request !", description: err});
     }
 }
 
@@ -58,14 +58,6 @@ exports.deleteWeaponById = async (req, res) => {
         const result = await weapon.delete()
         res.json(result)
     }catch(err){
-        loadError(res, err);
+        res.status(400).send({ error: "Bad request !", description: err});
     }
-}
-
-function loadError(res, err) {
-    res.status(400).send({ error: "Bad request !", description: err});
-
-    res.status(404).send({ error: "Weapon not found !", description: err});
-
-    res.status(500).send({ error: "Server error !", description: err});
 }
